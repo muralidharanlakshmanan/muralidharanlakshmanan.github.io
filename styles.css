@@ -24,3 +24,5 @@
 .mini-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px}.mini-links a{font-size:.72rem;font-weight:800;color:#9cb8ff}
 .recognition-card-link{display:block}.recognition-card-link article{height:100%;transition:transform .2s,border-color .2s}.recognition-card-link:hover article{transform:translateY(-3px);border-color:#9fb2ff}
 .service-details{margin:26px 0 30px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:#111b30;padding:0 18px}.service-details summary{cursor:pointer;padding:16px 0;font-size:.8rem;font-weight:800;color:#dce4f1}.service-details p{font-size:.82rem!important;color:#aeb8c9!important;margin:0;padding:0 0 18px}
+
+.credential-note{margin-top:28px;border-top:1px solid var(--line);padding-top:20px}.credential-note strong{font-size:.82rem}.credential-note p{margin:7px 0 0;color:var(--muted);font-size:.82rem}
