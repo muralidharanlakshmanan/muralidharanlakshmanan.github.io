@@ -1,24 +1,34 @@
-document.getElementById('year').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+  const year=document.getElementById('year');
+  if(year) year.textContent=new Date().getFullYear();
 
-const toggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.nav-links');
+  const btn=document.querySelector('.menu-toggle');
+  const nav=document.querySelector('.main-nav');
+  if(btn && nav){
+    btn.addEventListener('click',()=>nav.classList.toggle('open'));
+  }
 
-toggle.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const target=document.getElementById('typed-text');
+  if(target){
+    const phrases=[
+      'enterprise-scale systems',
+      'resilient cloud platforms',
+      'real-time data architectures',
+      'AI-native solutions'
+    ];
+    let phrase=0, char=0, deleting=false;
+    const tick=()=>{
+      const word=phrases[phrase];
+      target.textContent=word.slice(0,char);
+      if(!deleting){
+        char++;
+        if(char>word.length){deleting=true;setTimeout(tick,1250);return;}
+      }else{
+        char--;
+        if(char<0){deleting=false;phrase=(phrase+1)%phrases.length;char=0;}
+      }
+      setTimeout(tick,deleting?35:70);
+    };
+    tick();
+  }
 });
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  });
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
